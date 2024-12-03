@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\AsistenciaController;
 use Illuminate\Support\Facades\Route;
 
 /*Mis Rutas */
@@ -11,6 +12,14 @@ use Illuminate\Support\Facades\Route;
 //     return view("dashboard");
 // })->middleware(["auth", "verified"])->name("dashboard");
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('asistencias', AsistenciaController::class);
+});
 
 Route::middleware('auth')->group(function(){
     // Ruta para mostrar la lista de empleados
@@ -32,6 +41,7 @@ Route::middleware('auth')->group(function(){
 
     // Ruta para eliminar un empleado
     Route::delete('empleados/{empleado}', [EmpleadoController::class, 'destroy'])->name('empleados.destroy');
+
 });
 
 
@@ -52,6 +62,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+
+    
+    
 });
 
 require __DIR__.'/auth.php';

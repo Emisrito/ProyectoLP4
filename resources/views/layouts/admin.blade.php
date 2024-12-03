@@ -167,6 +167,39 @@
           </li>
         </ul>
       </nav>
+      
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+                <a href="#" class="nav-link" style="background-color: #43aa8b; color: white; border-radius: 5px;">
+                    <i class="nav-icon bi bi-clipboard-check"></i>
+                    <p>
+                        Asistencias
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('asistencias/create') }}" class="nav-link" 
+                          style="background-color: #43aa8b; color: white; border-radius: 5px;">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Registrar Asistencia</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('asistencias') }}" class="nav-link" 
+                          style="background-color: #43aa8b; color: white; border-radius: 5px;">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Mostrar Asistencias</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+
+
 
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
