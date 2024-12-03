@@ -124,7 +124,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <form href="{{ url('home') }}" method="GET" id="home-form"> <!-- Aquí se cambió la ruta: action="{{ route('home') }}"  -->
+                <form action="{{ route('home') }}"  method="GET" id="home-form"> <!-- Aquí se cambió la ruta: href="{{ url('home') }}"  -->
                     <button type="submit" class="nav-link btn btn-link" 
                             style="background-color: #007bff; color: white; border-radius: 5px; padding: 10px; text-align: left;">
                         <i class="nav-icon bi bi-house-door-fill"></i>
