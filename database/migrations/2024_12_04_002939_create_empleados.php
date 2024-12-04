@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string("estado", 50); // Estado del empleado [activo, inactivo]
             $table->string("hora_entrada", 50); // Hora de entrada del empleado
             $table->string("hora_salida", 50); // Hora de salida del empleado
-            $table->text("foto")->nullable(); // Foto del empleado 
+            $table->string("password", 255); // Contraseña del empleado
             $table->timestamps();
         });
     }

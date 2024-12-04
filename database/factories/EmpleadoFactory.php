@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Empleado>
@@ -33,6 +34,7 @@ class EmpleadoFactory extends Factory
             "estado" => "activo", // Estado fijo como 'activo'
             "hora_entrada" => "09:00:00", // Hora de entrada fija
             "hora_salida" => "17:00:00", // Hora de salida fija
+            "password" => Hash::make($this->faker->unique()->randomNumber(8)), // Hashea el DNI generado
             "created_at" => now(),
             "updated_at" => now(),
         ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadoController extends Controller
 {
@@ -37,6 +38,7 @@ class EmpleadoController extends Controller
             'hora_entrada' => 'required|date_format:H:i',  // Acepta solo horas y minutos (H:i)
             'hora_salida' => 'required|date_format:H:i',   // Acepta solo horas y minutos (H:i)
             'fecha_nacimiento' => 'required|date', // Validación de fecha
+            
         ]);
     
         // Crear el empleado con la fecha de nacimiento como string (formato Y-m-d)
@@ -44,7 +46,7 @@ class EmpleadoController extends Controller
             'nombre_apellido' => $request->nombre_apellido,
             'dni' => $request->dni,
             // Convertir la fecha de nacimiento a formato Y-m-d y guardarla como string
-            'fecha_nacimiento' => Carbon::parse($request->fecha_nacimiento)->format('Y-m-d'),
+            'fecha_nacimiento' => Carbon::parse($request->fecha_nacimiento)->format('d/m/Y'),
             'email' => $request->email,
             'telefono' => $request->telefono,
             'direccion' => $request->direccion,
@@ -52,6 +54,7 @@ class EmpleadoController extends Controller
             'estado' => $request->estado,
             'hora_entrada' => Carbon::createFromFormat('H:i', $request->hora_entrada)->format('H:i:s'),  // Convierte la hora a H:i:s
             'hora_salida' => Carbon::createFromFormat('H:i', $request->hora_salida)->format('H:i:s'),    // Convierte la hora a H:i:s
+            'password' => Hash::make($request->dni), // Usa el DNI como contraseña y la hashea
         ]);
     
         return redirect()->route('empleados.index')->with('success', 'Empleado creado exitosamente');
@@ -89,6 +92,7 @@ class EmpleadoController extends Controller
             'estado' => 'required|string|in:activo,inactivo',
             'hora_entrada' => 'nullable|date_format:H:i:s',
             'hora_salida' => 'nullable|date_format:H:i:s',
+            'password' => 'nullable|string|max:255',
         ]);
         
 
